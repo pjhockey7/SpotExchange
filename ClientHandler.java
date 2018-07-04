@@ -46,6 +46,7 @@ public class ClientHandler extends Thread
         switch(function)
         {
             case 1:
+                sendSpots();
                 break;
         }
         try
@@ -61,7 +62,6 @@ public class ClientHandler extends Thread
     /**
     * Determines what type of request it is
     *
-    * @param  username String that is the username of the user
     * @return int corresponding to a type of request or -1 for bad connection
     * @since 1.0
     */

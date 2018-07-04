@@ -1,5 +1,8 @@
 package spotexchange.server;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -38,7 +41,7 @@ public class ParkingSpot
     * @return HashMap<String, Object>  the user
     * @since 1.0
     */
-    public HashMap<String, Object> getUser()
+    public HashMap<String, Object> getUser(String username)
     {
         return user;
     }
@@ -79,7 +82,7 @@ public class ParkingSpot
     /**
     * Sets the start time
     *
-    * @param  startTime int the starTime
+    * @param startTime int the starTime
     * @since 1.0
     */
     public void setStartTime(int startTime)
@@ -101,7 +104,7 @@ public class ParkingSpot
     /**
     * Sets the wait time
     *
-    * @param  waitTime int the wait time
+    * @param waitTime int the wait time
     * @since 1.0
     */
     public void setWaitTime(int waitTime)
