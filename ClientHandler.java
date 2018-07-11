@@ -41,7 +41,17 @@ public class ClientHandler extends Thread
     */
     public void run()
     {
-        int function = determineRequest();
+        try
+        {
+            System.out.println(input.read());
+            output.write(7);
+            output.write(8);
+        }
+        catch(IOException e)
+        {
+            System.out.println(e);
+        }
+        /*int function = determineRequest();
         //call function for each type of request this can be altered as we get more functions
         switch(function)
         {
@@ -56,7 +66,7 @@ public class ClientHandler extends Thread
         catch(IOException e)
         {
             System.out.println(e);
-        }
+        }*/
     }
     
     /**

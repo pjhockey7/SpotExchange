@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class Database
 {
+    //about a half a kilometer
+    private final double RELATIVE_MAX_DISTANCE = .004;
+    private final int MAX_RELEVANT_SPOTS = 5;
+    
     List<ParkingSpot> spots = new ArrayList<ParkingSpot>();
     
     public Database()
@@ -182,7 +186,7 @@ public class Database
     }
     
     /**
-    * Adds a parkingspot to the tree
+    * Adds a ParkingSpot to the list
     *
     * @param spot ParkingSpot to add
     * @since 1.0
@@ -193,17 +197,40 @@ public class Database
     }
     
     /**
-    * TODO FOR NIC
     * Returns a list of the spots in the vicinity
     *
-    * @param x double x coordinate
-    * @param y double y coordinate
+    * @param latitude double latitude coordinate
+    * @param longitude double longitude coordinate
     * @return List<ParkingSpot> has all the parking spots
     * @since 1.0
     */
-    public synchronized List<ParkingSpot> getSpots(double x, double y)
+    public List<ParkingSpot> getSpots(double latitude, double longitude)
     {
-        return null;
+        List<ParkingSpot> closeSpots = new ArrayList<ParkingSpot>();
+        ParkingSpot temp;
+        double spotLat;
+        double spotLong;
+        
+        int i=0;
+        while(closeSpots.size()<MAX_RELEVANT_SPOTS)
+        {
+            try
+            {
+                temp=closeSpots.get(i);
+                //did a bunch of math.  this isn't the actual distance but the approximation is 100% close enough
+                if(temp.getLat()-latitude<RELATIVE_MAX_DISTANCE&&temp.getLong()-longitude<RELATIVE_MAX_DISTANCE)
+                {
+                    closeSpots.add(temp);
+                }
+            }
+            catch(IndexOutOfBoundsException e)
+            {
+                break;
+            }
+            i++;
+        }
+        
+        return spots;
     }
     //below we should have all of the more specific data base functions like getting nodes from the root as well as specific things from files.  we can add as we go.  Some of these files will need to be synchronized
 }
