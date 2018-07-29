@@ -12,35 +12,129 @@ public class ParkingSpot
     private boolean paid;
     private int startTime;
     private int waitTime;
-    private final HashMap<String, Object> user;
-    //need to add a location but researching google api first
+    private final HashMap<String, Object> seller;
+    private HashMap<String, Object> buyer;
+    private double latitude;
+    private double longitude;
     
-    public ParkingSpot(HashMap<String, Object> user, boolean paid, int startTime, int waitTime)
+    public ParkingSpot(HashMap<String, Object> user, boolean paid, int startTime, int waitTime, double latitude, double longitude)
     {
-        this.user = user;
+        this.seller = user;
         this.paid=paid;
         this.startTime=startTime;
         this.waitTime=waitTime;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
     
-    public ParkingSpot(HashMap<String, Object> user, boolean paid, int startTime, int waitTime, String details)
+    public ParkingSpot(HashMap<String, Object> user, boolean paid, int startTime, int waitTime, double latitude, double longitude, String details)
     {
-        this.user = user;
+        this.seller = user;
         this.paid=paid;
         this.startTime=startTime;
         this.waitTime=waitTime;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.details = details;
+    }
+    
+    /**
+    * Resets the details
+    *
+    * @param String the details
+    * @since 1.0
+    */
+    public void setDetails(String details)
+    {
+        this.details=details;
+    }
+    
+    /**
+    * Returns details
+    *
+    * @return String the details
+    * @since 1.0
+    */
+    public String getDetails()
+    {
+        return details;
+    }
+    
+    /**
+    * Returns longitdue
+    *
+    * @return double the longitude
+    * @since 1.0
+    */
+    public double getLong()
+    {
+        return longitude;
+    }
+    
+    /**
+    * Sets the longitude
+    *
+    * @param longitude double the longitude
+    * @since 1.0
+    */
+    public void setLong(double longitude)
+    {
+        this.longitude = longitude;
+    }
+    
+    /**
+    * Returns latitude
+    *
+    * @return double the latitude
+    * @since 1.0
+    */
+    public double getLat()
+    {
+        return latitude;
+    }
+    
+    /**
+    * Sets the latitude
+    *
+    * @param latitude double the latitude
+    * @since 1.0
+    */
+    public void setLat(double latitude)
+    {
+        this.latitude = latitude;
     }
     
     /**
     * Returns the user's HashMap
     *
-    * @return HashMap<String, Object>  the user
+    * @return HashMap<String, Object>  the seller
     * @since 1.0
     */
-    public HashMap<String, Object> getUser()
+    public HashMap<String, Object> getSeller()
     {
-        return user;
+        return seller;
+    }
+    
+    /**
+    * Returns the user's HashMap
+    *
+    * @param buyer HashMap<String, Object>  the buyer
+    * @since 1.0
+    */
+    public void setBuyer(HashMap<String, Object> buyer)
+    {
+        this.buyer = buyer;
+    }
+    
+    /**
+    * Returns the user's HashMap
+    *
+    * @return HashMap<String, Object>  the buyer
+    * @since 1.0
+    */
+    public HashMap<String, Object> getBuyer()
+    {
+        return buyer;
     }
     
     /**
@@ -79,7 +173,7 @@ public class ParkingSpot
     /**
     * Sets the start time
     *
-    * @param  startTime int the starTime
+    * @param startTime int the starTime
     * @since 1.0
     */
     public void setStartTime(int startTime)
@@ -101,7 +195,7 @@ public class ParkingSpot
     /**
     * Sets the wait time
     *
-    * @param  waitTime int the wait time
+    * @param waitTime int the wait time
     * @since 1.0
     */
     public void setWaitTime(int waitTime)

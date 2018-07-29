@@ -14,14 +14,14 @@ public class SpotExchangeServer
     public static void main(String[] args)
     {
         Database db = new Database();
-        
         //add code to connect to other servers
         
         ServerSocket serverSocket = null;
         boolean socketInitialized = false;
         try
         {
-            serverSocket = new ServerSocket(12345,0,InetAddress.getLocalHost());
+            System.out.println(InetAddress.getLocalHost());
+            serverSocket = new ServerSocket(12345,0);
             socketInitialized = true;
         }
         catch(IOException e)
